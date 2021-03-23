@@ -1,0 +1,8 @@
+/auth/node_modules/
+/auth/coverage/
+/client/node_modules/
+/client/.next/
+/tickets/node_modules/
+/tickets/coverage/
+/common/build/
+/common/node_modules/
