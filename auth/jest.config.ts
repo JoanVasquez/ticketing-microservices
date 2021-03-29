@@ -1,7 +1,7 @@
 module.exports = {
   preset: "ts-jest/presets/js-with-ts",
   testEnvironment: "node",
-  //collectCoverage: true,
+  collectCoverage: true,
   coveragePathIgnorePatterns: ["/node_modules/", "/build/", "/coverage/"],
   setupFilesAfterEnv: ["./jest.setup.ts"],
   transformIgnorePatterns: [

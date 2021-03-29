@@ -1,5 +1,6 @@
 import { NotFoundError, NotAuthorizedError } from "@jvtickets22/common";
 import Ticket from "./ticket.model";
+import { TicketCreatedPublisher } from "../../events/publisher/ticket.created.publisher";
 
 export const createTicketDao = async (data: any, userId: string) => {
   const { title, price } = data;
@@ -10,6 +11,14 @@ export const createTicketDao = async (data: any, userId: string) => {
   });
 
   await ticket.save();
+
+  new TicketCreatedPublisher(client).publish({
+    id: ticket.id,
+    title: ticket.title,
+    price: ticket.price,
+    userId: ticket.userId,
+  });
+
   return ticket;
 };
 export const listTicketsDao = async () => {
